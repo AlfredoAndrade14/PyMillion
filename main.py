@@ -1,18 +1,12 @@
 import pygame
 
+from audios import Audios
+
 pygame.init()
 Gameloop = True
 
-#musica do inico
-pygame.mixer.music.load('src/sounds/musica.wav')
-pygame.mixer.music.play(-1) 
-
-#sons do jogo
-acertou = pygame.mixer.Sound('src/sounds/acertou.wav')
-acertou2 = pygame.mixer.Sound('src/sounds/acertou2.wav')
-errou = pygame.mixer.Sound('src/sounds/errou.wav')
-certeza = pygame.mixer.Sound('src/sounds/certeza.wav')
-pfinal = pygame.mixer.Sound('src/sounds/pfinal.wav')
+#inicializa os audios do jogo
+audios = Audios()
 
 #configura a janela
 display = pygame.display.set_mode([600,730])
@@ -41,6 +35,8 @@ if __name__ == "__main__":
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     Gameloop = False
+                elif event.key == pygame.K_SPACE:
+                    audios.certeza.play()
 
 
         #temporariamente move a logo do python

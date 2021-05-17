@@ -4,12 +4,13 @@ from audios import Audios
 
 pygame.init()
 Gameloop = True
+SCREEN_SIZE = (600, 695)
 
 #inicializa os audios do jogo
 audios = Audios()
 
 #configura a janela
-display = pygame.display.set_mode([600,730])
+display = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption('PyMillion')
 
 #define sprites
@@ -49,6 +50,5 @@ if __name__ == "__main__":
             python.rect.y += 1
         if keys[pygame.K_w]:
             python.rect.y -= 1
-
 
         pygame.display.update()

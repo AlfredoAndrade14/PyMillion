@@ -4,6 +4,12 @@ from pygame.constants import MOUSEBUTTONDOWN
 
 from textos import Texto
 
+from pythonImg import Python
+
+objectGroup = pygame.sprite.Group()
+
+python = Python(objectGroup)
+
 class Menu():
     def main_menu():   
         # Configura a janela
@@ -16,12 +22,12 @@ class Menu():
         PYTHON_BLUE = (30, 144, 255)
         WHITE_PY = (255, 255, 255)
         
-        drawGroup = pygame.sprite.Group()
         
         Playing = False
         while not Playing:
             menu_display.fill(BACKGROUND_COLOR)
-            drawGroup.draw(menu_display)
+            
+            objectGroup.draw(menu_display)
 
             Texto('Py',30,(30,144,255), 275, 40, menu_display)
             Texto('Million',30,(251, 236, 93), 205, 90, menu_display)

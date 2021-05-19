@@ -1,0 +1,11 @@
+“Python é uma linguagem…” : "[ 'de alto nível' , 'de um país da Ásia' ,'de máquina' ,'de baixo nível' ], [ 'de alto nível' ]]
+
+“São tipos de python…”: "[ 'double; long; int' , 'str; int; float' , 'float; double; short' , 'long; ASCII; byte' ], [ 'str; int; float]]
+
+“O comando ‘print()’ faz o que?”: "['Imprime uma folha de papel', 'faz um desenho', 'recebe um valor de entrada' , 'imprime algo no terminal'], [ 'imprime algo no terminal' ]]
+
+“Qual a diferença entre ‘1’ e 1 ?”: "['Nenhuma', 'um é float e outro bool', 'Um é uma str e o outro um int' , 'um é float e outro int'], [ 'Um é uma str e o outro um int' ]]"
+
+“Qual função converte um valor em string?”: "[  'int()' , ”string()” , 'str()' , 'word()' ], [ 'str()' ]"
+
+“Qual função converte um número em inteiro?”: "['int()' , 'float()' , 'str()' , 'inteiro()' ], [ 'int()']"

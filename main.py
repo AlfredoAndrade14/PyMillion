@@ -18,7 +18,7 @@ Gameloop = Menu.main_menu()
 # Inicializa os audios do jogo
 audios = Audios()
 
-#Objetos
+# Objetos
 objectGroup = pygame.sprite.Group()
 
 python = Python(objectGroup)

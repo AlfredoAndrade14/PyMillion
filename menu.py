@@ -29,25 +29,25 @@ class Menu():
             
             objectGroup.draw(menu_display)
 
-            Texto('Py',30,(30,144,255), 275, 40, menu_display)
-            Texto('Million',30,(251, 236, 93), 205, 90, menu_display)
+            Texto('Py',30,(30,144,255), 275, 40, menu_display,"8-Bit")
+            Texto('Million',30,(251, 236, 93), 205, 90, menu_display,"8-Bit")
 
-            Texto("MAIN MENU", 30, (WHITE_PY), 160, 200, menu_display)
+            Texto("MAIN MENU", 30, (WHITE_PY), 160, 200, menu_display, "Pixel")
 
             mx, my = pygame.mouse.get_pos()
 
             # Botões
             start_game_btn = pygame.Rect(160, 295, 270, 40)
             pygame.draw.rect(menu_display, (BACKGROUND_COLOR), start_game_btn)
-            Texto("START GAME", 25, (PYTHON_BLUE), 170, 300, menu_display)
+            Texto("START GAME", 25, (PYTHON_BLUE), 170, 300, menu_display, "Pixel")
 
             options_btn = pygame.Rect(160, 345, 270, 40)
             pygame.draw.rect(menu_display, (BACKGROUND_COLOR), options_btn)
-            Texto("OPTIONS", 25, (PYTHON_BLUE), 215, 350, menu_display)
+            Texto("OPTIONS", 25, (PYTHON_BLUE), 215, 350, menu_display, "Pixel")
 
             credits_btn = pygame.Rect(160, 395, 270, 40)
             pygame.draw.rect(menu_display, (BACKGROUND_COLOR), credits_btn)
-            Texto("CREDITS", 25, (PYTHON_BLUE), 215, 400, menu_display)
+            Texto("CREDITS", 25, (PYTHON_BLUE), 215, 400, menu_display, "Pixel")
 
             for event in pygame.event.get():
                 # Sai do MENU

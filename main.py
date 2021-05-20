@@ -9,28 +9,16 @@ from textos import Texto
 # Importa a classe que cria o menu principal
 from menu import Menu
 
-# Importa o sprite do python
-from alternativaA import AlternativaA
-from alternativaB import AlternativaB
-from alternativaC import AlternativaC
-from alternativaD import AlternativaD
-
 # Inicia o pygame
 pygame.init()
 
+from caixa import Caixa
+
 # Inicializa os audios do jogo
-#audios = Audios()
+audios = Audios()
 
 # Objetos
 objectGroup = pygame.sprite.Group()
-
-A = AlternativaA(objectGroup)
-
-B = AlternativaB(objectGroup)
-
-C = AlternativaC(objectGroup)
-
-D = AlternativaD(objectGroup)
 
 # Configura a janela
 SCREEN_SIZE = (600, 695)
@@ -56,6 +44,21 @@ if __name__ == "__main__":
 
         Texto('Py',30,(30,144,255), 275, 10, menu_display, "8-Bit")
         Texto('Million',30,(251, 236, 93), 205, 60, menu_display, "8-Bit")
+
+        # Pergunta
+        Caixa(0, 120, 600, 90, menu_display, [25, 25, 112, 10], '')
+
+        # Alternativa A
+        Caixa(70, 270, 500, 35, menu_display, [30,144,255, 10], 'A')
+
+        # Alternativa B
+        Caixa(70, 335, 500, 35, menu_display, [178, 34, 34, 10], 'B')
+
+        # Alternativa c
+        Caixa(70, 400, 500, 35, menu_display, [251, 236, 93, 10], 'C')
+        
+        # Alternativa D
+        Caixa(70, 465, 500, 35, menu_display, [60, 179, 113, 10], 'D')
 
         objectGroup.draw(menu_display)
 

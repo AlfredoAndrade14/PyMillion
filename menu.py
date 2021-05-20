@@ -51,7 +51,7 @@ class Menu():
 
             quit_btn = pygame.Rect(240, 445, 105, 40)
             pygame.draw.rect(menu_display, (BACKGROUND_COLOR), quit_btn)
-            Texto("QUIT", 25, (PYTHON_BLUE), 245, 450, menu_display, "Pixel")
+            Texto("SAIR", 25, (PYTHON_BLUE), 245, 450, menu_display, "Pixel")
 
             for event in pygame.event.get():
                 # Sai do MENU

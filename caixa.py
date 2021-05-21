@@ -21,5 +21,5 @@ class Caixinha:
             pygame.draw.circle(self.display, [255, 255, 255, 5], [self.x, self.y + 17], 25)
             Texto(self.alternativa, 16, (68, 73, 80), self.x-8, self.y+9, self.display, "Pixel")
 
-    def escreve_pergunta(self, conteudo , x, y):
-        return Texto(conteudo, 12, (0,0,0), x, y, self.display, "Pixel")
+    def escreve_pergunta(self, conteudo , cor, x, y):
+        return Texto(conteudo, 12, cor, x, y, self.display, "Pixel")

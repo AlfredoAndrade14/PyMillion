@@ -4,6 +4,8 @@ from pygame.constants import KEYDOWN, K_t, MOUSEBUTTONDOWN
 
 from textos import Texto
 
+from creditos import Creditos
+
 from pythonImg import Python
 
 objectGroup = pygame.sprite.Group()
@@ -73,6 +75,10 @@ class Menu():
                     if event.type == MOUSEBUTTONDOWN:
                         pygame.quit()
                         quit()
+                
+                elif credits_btn.collidepoint((mx, my)):
+                    if event.type == MOUSEBUTTONDOWN:
+                        Creditos.creditos(menu_display)
 
                 if event.type == KEYDOWN:
                     if event.key == K_t:

@@ -4,8 +4,6 @@ from pygame.constants import MOUSEBUTTONDOWN
 
 from textos import Texto
 
-from pythonImg import Python
-
 class Creditos():
     def creditos(display):   
         # Configura a janela
@@ -30,9 +28,13 @@ class Creditos():
             mx, my = pygame.mouse.get_pos()
 
             # Botões
-            quit_btn = pygame.Rect(240, 445, 105, 40)
+            quit_btn = pygame.Rect(340, 455, 105, 40)
             pygame.draw.rect(menu_display, (BACKGROUND_COLOR), quit_btn)
-            Texto("SAIR", 25, (PYTHON_BLUE), 245, 450, menu_display, "Pixel")
+            Texto("SAIR", 25, (PYTHON_BLUE), 345, 460, menu_display, "Pixel")
+
+            menu_btn = pygame.Rect(140, 455, 105, 40)
+            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), menu_btn)
+            Texto("Menu", 25, (PYTHON_BLUE), 145, 460, menu_display, "Pixel")
 
             for event in pygame.event.get():
                 # Sai do MENU
@@ -49,5 +51,9 @@ class Creditos():
                     if event.type == MOUSEBUTTONDOWN:
                         pygame.quit()
                         quit()
+                elif menu_btn.collidepoint((mx, my)):
+                    if event.type == MOUSEBUTTONDOWN:
+                        return
+                        
 
             pygame.display.update()

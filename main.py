@@ -46,16 +46,55 @@ cor_B = (178, 34, 34, 10)
 cor_C = (251, 236, 93, 10)
 cor_D = (60, 179, 113, 10)
 
-def alternativa_escolhida():
+def alternativa_escolhida(cor_A):
         if alt_a.collidepoint((mx, my)):
             cor_A = (8, 81, 153)
+            cor_B = (178, 34, 34, 10)
+            cor_C = (251, 236, 93, 10)
+            cor_D = (60, 179, 113, 10)
         elif alt_b.collidepoint((mx, my)):
-            print("b")
+            cor_A = (30,144,255, 10)
+            cor_B = (128, 23, 23)
+            cor_C = (251, 236, 93, 10)
+            cor_D = (60, 179, 113, 10)
         elif alt_c.collidepoint((mx, my)):
             pass
         elif alt_c.collidepoint((mx, my)):
             pass
 
+
+def valida_pergunta():
+    audios.certeza.play()
+    certeza = False
+    while not certeza:
+        mx, my = pygame.mouse.get_pos()
+        sim = Caixinha(208, 525, 50, 35, menu_display, (255,255,255), "Sim", "") 
+        sim.desenha_certeza()
+        sim_box = pygame.Rect(200, 520, 50, 30)
+
+        nao_box = pygame.Rect(200, 520, 50, 30)
+        nao = Caixinha(350, 521, 50, 35, menu_display, (255,255,255), "Não", "") 
+        nao.desenha_certeza()
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                certeza = True
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    certeza = True
+
+            if event.type == MOUSEBUTTONDOWN:
+                if sim_box.collidepoint((mx, my)):
+                    return True
+                elif nao_box.collidepoint((mx, my)):
+                    sim = None
+                    nao = None
+                    sim_box = None
+                    nao_box = None
+                    pygame.display.update()
+                    return False
+
+        pygame.display.update()
 
 if __name__ == "__main__":
     count = 1
@@ -72,35 +111,35 @@ if __name__ == "__main__":
                     Gameloop = False
             #abaixo desta linha copie e cole
             if event.type == MOUSEBUTTONDOWN:
-                alternativa_escolhida()
                 if alt_a.collidepoint((mx, my)):
-                    audios.certeza.play()
                     alternativa = A.conteudo
                 elif alt_b.collidepoint((mx, my)):
-                    audios.certeza.play()
                     alternativa = B.conteudo
                 elif alt_c.collidepoint((mx, my)):
-                    audios.certeza.play()
                     alternativa = C.conteudo
                 elif alt_d.collidepoint((mx, my)):
-                    audios.certeza.play()
                     alternativa = D.conteudo
                     
-                if alternativa == res:
-                    sleep(1)
-                    audios.acertou.play()
-                    count += 1
-                    premio += 5000
-                    sleep(2)
-                    respondeu = False
+                if valida_pergunta():
+                    if alternativa == res:
+                        sleep(1)
+                        audios.acertou.play()
+                        count += 1
+                        premio += 5000
+                        sleep(2)
+                        respondeu = False
+                    else:
+                        sleep(1)
+                        audios.errou.play()
+                        Menu.game_over()
+                        respondeu = False
+                        count = 0
+                        premio = 0
                 else:
-                    sleep(1)
-                    audios.errou.play()
-                    Menu.game_over()
-                    respondeu = False
-                    count = 0
-                    premio = 0
-                    
+                    pygame.display.update()
+
+
+
         if not respondeu and Gameloop:
             # Define objetos da janela
             menu_display.fill((68, 73, 80))
@@ -137,6 +176,7 @@ if __name__ == "__main__":
             B = Caixinha(70, 335, 500, 35, menu_display, cor_B, "B", b) 
             B.desenha_caixinha()
             B.escreve_pergunta(b, (0,0,0), 100, 345)
+            pygame.display.update()
 
             # Alternativa c
             alt_c = pygame.Rect(45, 390, 525, 53)

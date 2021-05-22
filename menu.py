@@ -70,7 +70,6 @@ class Menu():
                         Gameloop = True
                         Menuv = True
                         pygame.display.update()
-                        print("chegou aqui")
                         return Gameloop
                 elif options_btn.collidepoint((mx, my)):
                     if event.type == MOUSEBUTTONDOWN:

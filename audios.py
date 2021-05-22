@@ -2,10 +2,6 @@ import pygame
 
 class Audios():
     def __init__(self):
-        #musica do inico
-        pygame.mixer.music.load('src/sounds/musica.wav')
-        pygame.mixer.music.play(-1) 
-
         #sons do jogo
         self.acertou = pygame.mixer.Sound('src/sounds/acertou.wav')
         self.acertou2 = pygame.mixer.Sound('src/sounds/acertou2.wav')

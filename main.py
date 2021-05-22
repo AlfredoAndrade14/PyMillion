@@ -17,9 +17,6 @@ from time import sleep
 from sorteiaperg import sorteiaPergunta
 from perguntas import perguntas1
 
-# Importa a função de game-over
-#from gameover import Gameover
-
 # Inicia o pygame
 pygame.init()
 
@@ -27,6 +24,8 @@ from caixa import *
 
 # Inicializa os audios do jogo
 audios = Audios()
+pygame.mixer.music.load('src/sounds/musica.wav')
+pygame.mixer.music.play(-1) 
 
 # Objetos
 objectGroup = pygame.sprite.Group()
@@ -55,7 +54,6 @@ def alternativa_escolhida():
             pass
         elif alt_c.collidepoint((mx, my)):
             pass
-
 
 if __name__ == "__main__":
     count = 1
@@ -96,10 +94,10 @@ if __name__ == "__main__":
                 else:
                     sleep(1)
                     audios.errou.play()
-                    Menu.game_over()
+                    sleep(2)
+                    Menu.game_over(premio, count)
                     respondeu = False
-                    count = 0
-                    premio = 0
+                    premio = count = 0
                     
         if not respondeu and Gameloop:
             # Define objetos da janela

@@ -96,7 +96,7 @@ class Menu():
 
 
     
-    def game_over():   
+    def game_over(premio, count):   
         # Configura a janela
         SCREEN_SIZE = (600, 695)
         menu_display = pygame.display.set_mode(SCREEN_SIZE)
@@ -115,18 +115,20 @@ class Menu():
             Texto('Py',30,(30,144,255), 270, 40, menu_display,"8-Bit")
             Texto('Million',30,(251, 236, 93), 200, 90, menu_display,"8-Bit")
 
-            Texto("GAME OVER", 30, (WHITE_PY), 160, 200, menu_display, "Pixel")
+            Texto("VOCÊ ERROU", 16, (WHITE_PY), 220, 200, menu_display, "Pixel")
+            Texto("Você ganhou: " + str(premio) + " Reais", 16, (218, 165, 32), 150, 300, menu_display, "Pixel")
+            Texto("Você acertou: " + str(count - 1) + " Perguntas", 16, (218, 165, 32), 130, 350, menu_display, "Pixel")
 
             mx, my = pygame.mouse.get_pos()
 
             # Botões
-            restart_btn = pygame.Rect(200, 330, 245, 40)
-            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), restart_btn)
-            Texto("RESTART", 25, (PYTHON_BLUE), 200, 330, menu_display, "Pixel")
-
-            quit_btn = pygame.Rect(240, 395, 105, 40)
+            quit_btn = pygame.Rect(340, 455, 105, 40)
             pygame.draw.rect(menu_display, (BACKGROUND_COLOR), quit_btn)
-            Texto("SAIR", 25, (PYTHON_BLUE), 240, 395, menu_display, "Pixel")
+            Texto("SAIR", 25, (PYTHON_BLUE), 345, 460, menu_display, "Pixel")
+
+            menu_btn = pygame.Rect(140, 455, 105, 40)
+            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), menu_btn)
+            Texto("Menu", 25, (PYTHON_BLUE), 145, 460, menu_display, "Pixel")
 
             for event in pygame.event.get():
                 # Sai do MENU
@@ -139,12 +141,10 @@ class Menu():
                         quit()
 
                 # Volta para o menu inicial do jogo
-                if restart_btn.collidepoint((mx, my)):
+                if menu_btn.collidepoint((mx, my)):
                     if event.type == MOUSEBUTTONDOWN:
-                        Gameloop = True
                         Playing = True
                         Menu.main_menu()
-                        return Gameloop
                 # Sai do jogo
                 elif quit_btn.collidepoint((mx, my)):
                     if event.type == MOUSEBUTTONDOWN:
@@ -173,18 +173,24 @@ class Menu():
                 Texto('Py',30,(30,144,255), 270, 40, menu_display,"8-Bit")
                 Texto('Million',30,(251, 236, 93), 200, 90, menu_display,"8-Bit")
 
-                Texto("GAME OVER", 30, (WHITE_PY), 160, 200, menu_display, "Pixel")
+                Texto("OPÇÕES", 25, (WHITE_PY), 220, 200, menu_display, "Pixel")
 
                 mx, my = pygame.mouse.get_pos()
 
                 # Botões
-                som_btn = pygame.Rect(200, 330, 245, 40)
+                som_btn = pygame.Rect(145, 325, 245, 40)
                 pygame.draw.rect(menu_display, (BACKGROUND_COLOR), som_btn)
-                Texto("SOM", 25, (PYTHON_BLUE), 200, 330, menu_display, "Pixel")
+                Texto("Desativar som", 25, (PYTHON_BLUE), 150, 330, menu_display, "Pixel")
 
-                voltar_btn = pygame.Rect(240, 395, 105, 40)
-                pygame.draw.rect(menu_display, (BACKGROUND_COLOR), voltar_btn)
-                Texto("VOLTAR", 25, (PYTHON_BLUE), 240, 395, menu_display, "Pixel")
+                som_btn2 = pygame.Rect(175, 375, 245, 40)
+                pygame.draw.rect(menu_display, (BACKGROUND_COLOR), som_btn2)
+                Texto("Ativar som", 25, (PYTHON_BLUE), 180, 380, menu_display, "Pixel")
+
+                menu_btn = pygame.Rect(235, 455, 105, 40)
+                pygame.draw.rect(menu_display, (BACKGROUND_COLOR), menu_btn)
+                Texto("Menu", 25, (PYTHON_BLUE), 240, 460, menu_display, "Pixel")
+
+                mpaused = False
 
                 for event in pygame.event.get():
                     # Sai do MENU
@@ -199,11 +205,20 @@ class Menu():
                     # Volta para o menu inicial do jogo
                     if som_btn.collidepoint((mx, my)):
                         if event.type == MOUSEBUTTONDOWN:
-                            mixer.pause()
+                            pygame.mixer.quit()
+                            pygame.mixer.init()
+                            mpaused = True
+                            
+                    elif som_btn2.collidepoint((mx, my)):
+                        if event.type == MOUSEBUTTONDOWN:
+                            if mpaused:
+                                pygame.mixer.music.load('src/sounds/musica.wav')
+                                pygame.mixer.music.play(-1)
+                                mpaused = False
                     # Sai do jogo
-                    elif voltar_btn.collidepoint((mx, my)):
+                    elif menu_btn.collidepoint((mx, my)):
                         if event.type == MOUSEBUTTONDOWN:
                             Option = True
-                            Menu.main_menu()
+                            return
                     
                 pygame.display.update()

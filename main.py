@@ -11,9 +11,14 @@ from textos import Texto
 # Importa a classe que cria o menu principal
 from menu import Menu
 
+from time import sleep
+
 # Importa a função de sorteio
 from sorteiaperg import sorteiaPergunta
 from perguntas import perguntas1
+
+# Importa a função de game-over
+#from gameover import Gameover
 
 # Inicia o pygame
 pygame.init()
@@ -36,6 +41,20 @@ Gameloop = Menu.main_menu()
 
 # CORES
 BACKGROUND_COLOR = (68, 73, 80)
+cor_A = (30,144,255, 10)
+cor_B = (178, 34, 34, 10)
+cor_C = (251, 236, 93, 10)
+cor_D = (60, 179, 113, 10)
+
+def alternativa_escolhida():
+        if alt_a.collidepoint((mx, my)):
+            cor_A = (8, 81, 153)
+        elif alt_b.collidepoint((mx, my)):
+            print("b")
+        elif alt_c.collidepoint((mx, my)):
+            pass
+        elif alt_c.collidepoint((mx, my)):
+            pass
 
 
 if __name__ == "__main__":
@@ -43,7 +62,6 @@ if __name__ == "__main__":
     premio = 0
     respondeu = False
     while Gameloop:
-
         mx, my = pygame.mouse.get_pos()
         for event in pygame.event.get():
             # Fecha a janela
@@ -52,57 +70,37 @@ if __name__ == "__main__":
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     Gameloop = False
-            
+            #abaixo desta linha copie e cole
             if event.type == MOUSEBUTTONDOWN:
+                alternativa_escolhida()
                 if alt_a.collidepoint((mx, my)):
                     audios.certeza.play()
-                    if alt_a.collidepoint((mx, my)):
-                        if a == res:
-                            audios.acertou.play()
-                            count += 1
-                            premio += 5000
-                        else:
-                            audios.errou.play()
-                            premio = 0
-                            print('perdeu')
-                    respondeu = False
+                    alternativa = A.conteudo
                 elif alt_b.collidepoint((mx, my)):
                     audios.certeza.play()
-                    if alt_b.collidepoint((mx, my)):
-                        if b == res:
-                            audios.acertou.play()
-                            count += 1
-                            premio += 5000
-                        else:
-                            audios.errou.play()
-                            premio = 0
-                            print('perdeu')
-                    respondeu = False
+                    alternativa = B.conteudo
                 elif alt_c.collidepoint((mx, my)):
                     audios.certeza.play()
-                    if alt_c.collidepoint((mx, my)):
-                        if c == res:
-                            audios.acertou.play()
-                            count += 1
-                            premio += 5000
-                        else:
-                            audios.errou.play()
-                            premio = 0
-                            print('perdeu')
-                    respondeu = False
+                    alternativa = C.conteudo
                 elif alt_d.collidepoint((mx, my)):
                     audios.certeza.play()
-                    if alt_d.collidepoint((mx, my)):
-                        if d == res:
-                            audios.acertou.play()
-                            count += 1
-                            premio += 5000
-                        else:
-                            audios.errou.play()
-                            premio = 0
-                            print('perdeu')
+                    alternativa = D.conteudo
+                    
+                if alternativa == res:
+                    sleep(1)
+                    audios.acertou.play()
+                    count += 1
+                    premio += 5000
+                    sleep(2)
                     respondeu = False
-
+                else:
+                    sleep(1)
+                    audios.errou.play()
+                    Menu.game_over()
+                    respondeu = False
+                    count = 0
+                    premio = 0
+                    
         if not respondeu and Gameloop:
             # Define objetos da janela
             menu_display.fill((68, 73, 80))
@@ -121,34 +119,34 @@ if __name__ == "__main__":
                 print('level 3')
                 break
             else:
-                print('pergubta final')
+                print('pergunta final')
                 break
 
-            Pergunta = Caixinha(0, 120, 600, 90, menu_display, (25, 25, 112, 10), count)
+            Pergunta = Caixinha(0, 120, 600, 90, menu_display, (25, 25, 112, 10), count, perg)
             Pergunta.desenha_caixinha()
             Pergunta.escreve_pergunta(perg, (255, 255, 255), 15, 160)
 
             # Alternativa A
             alt_a = pygame.Rect(45, 260, 525, 53)
-            A = Caixinha(70, 270, 500, 35, menu_display, ((30,144,255, 10)), "A")
+            A = Caixinha(70, 270, 500, 35, menu_display, (cor_A), "A", a)
             A.desenha_caixinha()
             A.escreve_pergunta(a, (0,0,0), 100, 280)
 
             # Alternativa B
             alt_b = pygame.Rect(45, 325, 525, 53)
-            B = Caixinha(70, 335, 500, 35, menu_display, [178, 34, 34, 10], "B") 
+            B = Caixinha(70, 335, 500, 35, menu_display, cor_B, "B", b) 
             B.desenha_caixinha()
             B.escreve_pergunta(b, (0,0,0), 100, 345)
 
             # Alternativa c
             alt_c = pygame.Rect(45, 390, 525, 53)
-            C = Caixinha(70, 400, 500, 35, menu_display, [251, 236, 93, 10], "C")
+            C = Caixinha(70, 400, 500, 35, menu_display, cor_C, "C", c)
             C.desenha_caixinha()
             C.escreve_pergunta(c, (0,0,0), 100, 410)
             
             # Alternativa D
             alt_d = pygame.Rect(45, 455, 525, 53)
-            D = Caixinha(70, 465, 500, 35, menu_display, [60, 179, 113, 10], "D")
+            D = Caixinha(70, 465, 500, 35, menu_display, cor_D, "D", d)
             D.desenha_caixinha()
             D.escreve_pergunta(d, (0,0,0), 100, 475)
 

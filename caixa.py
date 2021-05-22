@@ -25,3 +25,8 @@ class Caixinha:
     def escreve_pergunta(self, conteudo , cor, x, y):
         return Texto(conteudo, 12, cor, x, y, self.display, "Pixel")
 
+    def desenha_certeza(self):
+        if self.x > 0:
+            Texto(self.alternativa, 16, (68, 73, 80), self.x, self.y + 10, self.display, "Pixel")
+
+    

@@ -45,36 +45,16 @@ cor_B = (178, 34, 34, 10)
 cor_C = (251, 236, 93, 10)
 cor_D = (60, 179, 113, 10)
 
-def alternativa_escolhida(cor_A):
-        if alt_a.collidepoint((mx, my)):
-            cor_A = (8, 81, 153)
-            cor_B = (178, 34, 34, 10)
-            cor_C = (251, 236, 93, 10)
-            cor_D = (60, 179, 113, 10)
-        elif alt_b.collidepoint((mx, my)):
-            cor_A = (30,144,255, 10)
-            cor_B = (128, 23, 23)
-            cor_C = (251, 236, 93, 10)
-            cor_D = (60, 179, 113, 10)
-        elif alt_c.collidepoint((mx, my)):
-            pass
-        elif alt_c.collidepoint((mx, my)):
-            pass
-
-
-def valida_pergunta():
+def valida_resposta(alternativa):
     audios.certeza.play()
     certeza = False
     while not certeza:
         mx, my = pygame.mouse.get_pos()
-        sim = Caixinha(208, 525, 50, 35, menu_display, (255,255,255), "Sim", "") 
-        sim.desenha_certeza()
-        sim_box = pygame.Rect(200, 520, 50, 30)
 
-        nao_box = pygame.Rect(200, 520, 50, 30)
-        nao = Caixinha(350, 521, 50, 35, menu_display, (255,255,255), "Não", "") 
-        nao.desenha_certeza()
-        
+        sim = Caixinha(208, 525, 145, 35, menu_display, (222, 207, 0), "CONFIRMAR", "") 
+        sim.desenha_certeza()
+        sim_box = pygame.Rect(200, 520, 145, 30)
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 certeza = True
@@ -84,15 +64,23 @@ def valida_pergunta():
 
             if event.type == MOUSEBUTTONDOWN:
                 if sim_box.collidepoint((mx, my)):
-                    return True
-                elif nao_box.collidepoint((mx, my)):
-                    sim = None
-                    nao = None
-                    sim_box = None
-                    nao_box = None
-                    pygame.display.update()
-                    return False
+                    switch = True
+                    return alternativa
+                elif alt_a.collidepoint((mx, my)):
+                    alternativa = A.conteudo
+                elif alt_b.collidepoint((mx, my)):
+                    alternativa = B.conteudo
+                elif alt_c.collidepoint((mx, my)):
+                    alternativa = C.conteudo
+                elif alt_d.collidepoint((mx, my)):
+                    alternativa = D.conteudo
+                else:
+                    alternativa = ""
 
+                if alternativa != "":
+                    valida_resposta(alternativa)
+                    
+                    
         pygame.display.update()
 
 if __name__ == "__main__":
@@ -108,7 +96,7 @@ if __name__ == "__main__":
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     Gameloop = False
-            #abaixo desta linha copie e cole
+            # Abaixo desta linha copie e cole
             if event.type == MOUSEBUTTONDOWN:
                 if alt_a.collidepoint((mx, my)):
                     alternativa = A.conteudo
@@ -122,23 +110,22 @@ if __name__ == "__main__":
                     alternativa = ""
 
                 if alternativa != "":
-                    if valida_pergunta():
-                        if alternativa == res:
-                            sleep(1)
-                            audios.acertou.play()
-                            count += 1
-                            premio += 5000
-                            sleep(2)
-                            respondeu = False
-                        else:
-                            sleep(1)
-                            audios.errou.play()
-                            Menu.game_over(premio, count)
-                            respondeu = False
-                            count = 0
-                            premio = 0
+                    resposta = valida_resposta(alternativa)
+                    if resposta == res:
+                        audios.acertou.play()
+                        count += 1
+                        premio += 5000
+                        sleep(1)
+                        respondeu = False
                     else:
-                        pygame.display.update()
+                        print("chegou aqui")
+                        audios.errou.play()
+                        Menu.game_over(premio, count)
+                        respondeu = False
+                        count = 0
+                        premio = 0
+                else:
+                    pygame.display.update()
 
 
 

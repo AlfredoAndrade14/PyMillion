@@ -119,24 +119,27 @@ if __name__ == "__main__":
                     alternativa = C.conteudo
                 elif alt_d.collidepoint((mx, my)):
                     alternativa = D.conteudo
-                    
-                if valida_pergunta():
-                    if alternativa == res:
-                        sleep(1)
-                        audios.acertou.play()
-                        count += 1
-                        premio += 5000
-                        sleep(2)
-                        respondeu = False
-                    else:
-                        sleep(1)
-                        audios.errou.play()
-                        Menu.game_over()
-                        respondeu = False
-                        count = 0
-                        premio = 0
                 else:
-                    pygame.display.update()
+                    alternativa = ""
+
+                if alternativa != "":
+                    if valida_pergunta():
+                        if alternativa == res:
+                            sleep(1)
+                            audios.acertou.play()
+                            count += 1
+                            premio += 5000
+                            sleep(2)
+                            respondeu = False
+                        else:
+                            sleep(1)
+                            audios.errou.play()
+                            Menu.game_over()
+                            respondeu = False
+                            count = 0
+                            premio = 0
+                    else:
+                        pygame.display.update()
 
 
 

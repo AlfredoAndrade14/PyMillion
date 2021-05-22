@@ -4,7 +4,7 @@ import pygame
 from textos import Texto
 
 class Caixinha:
-    def __init__(self, x, y, w, h, display, cor, alternativa):
+    def __init__(self, x, y, w, h, display, cor, alternativa, conteudo):
         super().__init__()
         self.x = x
         self.y = y
@@ -13,6 +13,7 @@ class Caixinha:
         self.display = display
         self.cor = cor
         self.alternativa = alternativa
+        self.conteudo = conteudo
         caixa = pygame.Rect(x, y, w, h)
         pygame.draw.rect(display, cor, caixa, 0, 10)
         
@@ -23,3 +24,4 @@ class Caixinha:
 
     def escreve_pergunta(self, conteudo , cor, x, y):
         return Texto(conteudo, 12, cor, x, y, self.display, "Pixel")
+

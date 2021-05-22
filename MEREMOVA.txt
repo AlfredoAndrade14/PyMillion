@@ -1,0 +1,51 @@
+if event.type == MOUSEBUTTONDOWN:
+                alternativa_escolhida()
+                if alt_a.collidepoint((mx, my)):
+                    audios.certeza.play()
+                    if alt_a.collidepoint((mx, my)):
+                        if a == res:
+                            audios.acertou.play()
+                            count += 1
+                            premio += 5000
+                        else:
+                            audios.errou.play()
+                            premio = 0
+                            print('perdeu')
+                            Menu.game_over()
+                    respondeu = False
+                elif alt_b.collidepoint((mx, my)):
+                    audios.certeza.play()
+                    if alt_b.collidepoint((mx, my)):
+                        if b == res:
+                            audios.acertou.play()
+                            count += 1
+                            premio += 5000
+                        else:
+                            audios.errou.play()
+                            premio = 0
+                            Menu.game_over()
+                    respondeu = False
+                elif alt_c.collidepoint((mx, my)):
+                    audios.certeza.play()
+                    if alt_c.collidepoint((mx, my)):
+                        if c == res:
+                            audios.acertou.play()
+                            count += 1
+                            premio += 5000
+                        else:
+                            audios.errou.play()
+                            premio = 0
+                            Menu.game_over()
+                    respondeu = False
+                elif alt_d.collidepoint((mx, my)):
+                    audios.certeza.play()
+                    if alt_d.collidepoint((mx, my)):
+                        if d == res:
+                            audios.acertou.play()
+                            count += 1
+                            premio += 5000
+                        else:
+                            audios.errou.play()
+                            premio = 0
+                            Menu.game_over()
+                    respondeu = False

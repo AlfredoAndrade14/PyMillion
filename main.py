@@ -133,7 +133,7 @@ if __name__ == "__main__":
                         else:
                             sleep(1)
                             audios.errou.play()
-                            Menu.game_over()
+                            Menu.game_over(premio, count)
                             respondeu = False
                             count = 0
                             premio = 0

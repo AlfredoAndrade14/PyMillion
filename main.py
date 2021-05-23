@@ -45,44 +45,28 @@ cor_B = (178, 34, 34, 10)
 cor_C = (251, 236, 93, 10)
 cor_D = (60, 179, 113, 10)
 
-def valida_resposta(alternativa):
+def valida_resposta():
     audios.certeza.play()
     certeza = False
+    sim = Caixinha(208, 525, 145, 35, menu_display, (222, 207, 0), "CONFIRMAR", "") 
+    sim.desenha_certeza()
+    sim_box = pygame.Rect(208, 525, 145, 35)
+    pygame.display.update()
+
     while not certeza:
         mx, my = pygame.mouse.get_pos()
-
-        sim = Caixinha(208, 525, 145, 35, menu_display, (222, 207, 0), "CONFIRMAR", "") 
-        sim.desenha_certeza()
-        sim_box = pygame.Rect(200, 520, 145, 30)
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                certeza = True
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    certeza = True
+                pygame.quit()
+                quit()
 
             if event.type == MOUSEBUTTONDOWN:
                 if sim_box.collidepoint((mx, my)):
-                    switch = True
-                    return alternativa
-                elif alt_a.collidepoint((mx, my)):
-                    alternativa = A.conteudo
-                elif alt_b.collidepoint((mx, my)):
-                    alternativa = B.conteudo
-                elif alt_c.collidepoint((mx, my)):
-                    alternativa = C.conteudo
-                elif alt_d.collidepoint((mx, my)):
-                    alternativa = D.conteudo
+                    return True
                 else:
-                    alternativa = ""
+                    return False
 
-                if alternativa != "":
-                    valida_resposta(alternativa)
-                    
-                    
-        pygame.display.update()
-
+    
 if __name__ == "__main__":
     count = 1
     premio = 0
@@ -110,22 +94,21 @@ if __name__ == "__main__":
                     alternativa = ""
 
                 if alternativa != "":
-                    resposta = valida_resposta(alternativa)
-                    if resposta == res:
-                        audios.acertou.play()
-                        count += 1
-                        premio += 5000
-                        sleep(1)
-                        respondeu = False
+                    if valida_resposta():
+                        if alternativa == res:
+                            audios.acertou.play()
+                            count += 1
+                            premio += 5000
+                            sleep(1)
+                            respondeu = False
+                        else:
+                            audios.errou.play()
+                            Menu.game_over(premio, count)
+                            respondeu = False
+                            count = 0
+                            premio = 0
                     else:
-                        print("chegou aqui")
-                        audios.errou.play()
-                        Menu.game_over(premio, count)
-                        respondeu = False
-                        count = 0
-                        premio = 0
-                else:
-                    pygame.display.update()
+                        pygame.display.update()
 
 
 

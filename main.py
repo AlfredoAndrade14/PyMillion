@@ -15,7 +15,7 @@ from time import sleep
 
 # Importa a função de sorteio
 from sorteiaperg import sorteiaPergunta
-from perguntas import perguntas1
+from perguntas import perguntas1,perguntas2,perguntas3,perguntafinal
 
 # Inicia o pygame
 pygame.init()
@@ -75,7 +75,7 @@ def valida_resposta(alternativa):
                     print("alterou para " + alternativa)
     
 if __name__ == "__main__":
-    count = 1
+    count = 0
     premio = 0
     respondeu = False
     while Gameloop:
@@ -129,17 +129,21 @@ if __name__ == "__main__":
             Texto('Premio: ' + str(premio),16,( 218, 165, 32), 20, 650, menu_display, "Pixel")
 
             if count < 6:
-                lista = perguntas1
+                if count == 0:
+                    lista = perguntas1[:]
                 perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
             elif count < 11:
-                print('level 2')
-                break
+                if count == 6:
+                    lista = perguntas2[:]
+                perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
             elif count < 16:
-                print('level 3')
-                break
+                if count == 11:
+                    lista = perguntas3[:]
+                perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
             else:
-                print('pergunta final')
-                break
+                lista = perguntafinal[:]
+                perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
+                audios.pfinal.play()
 
             Pergunta = Caixinha(0, 120, 600, 90, menu_display, (25, 25, 112, 10), count, perg)
             Pergunta.desenha_caixinha()

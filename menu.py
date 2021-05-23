@@ -114,7 +114,7 @@ class Menu():
 
             Texto("VOCÊ ERROU", 16, (WHITE_PY), 220, 200, menu_display, "Pixel")
             Texto("Você ganhou: " + str(premio) + " Reais", 16, (218, 165, 32), 150, 300, menu_display, "Pixel")
-            Texto("Você acertou: " + str(count - 1) + " Perguntas", 16, (218, 165, 32), 130, 350, menu_display, "Pixel")
+            Texto("Você acertou: " + str(count) + " Perguntas", 16, (218, 165, 32), 130, 350, menu_display, "Pixel")
 
             mx, my = pygame.mouse.get_pos()
 

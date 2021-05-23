@@ -60,19 +60,20 @@ def valida_resposta(alternativa):
                 quit()
             if event.type == MOUSEBUTTONDOWN:
                 if sim_box.collidepoint((mx, my)):
-                    print("retornou " + alternativa)
                     return alternativa
                 else:
-                    audios.certeza.play()
                     if alt_a.collidepoint((mx, my)):
+                        audios.certeza.play()
                         alternativa = A.conteudo
                     elif alt_b.collidepoint((mx, my)):
+                        audios.certeza.play()
                         alternativa = B.conteudo
                     elif alt_c.collidepoint((mx, my)):
+                        audios.certeza.play()
                         alternativa = C.conteudo
                     elif alt_d.collidepoint((mx, my)):
+                        audios.certeza.play()
                         alternativa = D.conteudo
-                    print("alterou para " + alternativa)
     
 if __name__ == "__main__":
     count = 0
@@ -102,7 +103,6 @@ if __name__ == "__main__":
 
                 if alternativa != "":
                     resp = valida_resposta(alternativa)
-                    print("a resposta final foi " +resp)
                     if resp == res:
                         audios.acertou.play()
                         count += 1

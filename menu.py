@@ -112,9 +112,9 @@ class Menu():
             Texto('Py',30,(30,144,255), 270, 40, menu_display,"8-Bit")
             Texto('Million',30,(251, 236, 93), 200, 90, menu_display,"8-Bit")
 
-            Texto("VOCÊ ERROU", 16, (WHITE_PY), 220, 200, menu_display, "Pixel")
+            Texto("VOCÊ ERROU", 16, (178, 34, 34, 10), 220, 200, menu_display, "Pixel")
             Texto("Você ganhou: " + str(premio) + " Reais", 16, (218, 165, 32), 150, 300, menu_display, "Pixel")
-            Texto("Você acertou: " + str(count) + " Perguntas", 16, (218, 165, 32), 130, 350, menu_display, "Pixel")
+            Texto("Você acertou: " + str(count) + " Perguntas", 16, (218, 165, 32), 110, 350, menu_display, "Pixel")
 
             mx, my = pygame.mouse.get_pos()
 
@@ -273,3 +273,60 @@ class Menu():
                             
 
                 pygame.display.update()
+
+    def vitoria(premio, count):   
+        # Configura a janela
+        SCREEN_SIZE = (600, 695)
+        menu_display = pygame.display.set_mode(SCREEN_SIZE)
+        pygame.display.set_caption('PyMillion')
+
+        # CORES
+        BACKGROUND_COLOR = (68, 73, 80)
+        PYTHON_BLUE = (30, 144, 255)
+        WHITE_PY = (255, 255, 255)
+        
+        Playing = False
+        while not Playing:
+            menu_display.fill(BACKGROUND_COLOR)
+            objectGroup.draw(menu_display)
+
+            Texto('Py',30,(30,144,255), 270, 40, menu_display,"8-Bit")
+            Texto('Million',30,(251, 236, 93), 200, 90, menu_display,"8-Bit")
+
+            Texto("PARABÉNS VOCÊ GANHOU", 16, (WHITE_PY), 145, 200, menu_display, "Pixel")
+            Texto("Você ganhou: " + str(premio) + " Reais", 16, (218, 165, 32), 150, 300, menu_display, "Pixel")
+            Texto("Você acertou todas as perguntas", 16, (60, 179, 113), 60, 350, menu_display, "Pixel")
+
+            mx, my = pygame.mouse.get_pos()
+
+            # Botões
+            quit_btn = pygame.Rect(340, 455, 105, 40)
+            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), quit_btn)
+            Texto("SAIR", 25, (PYTHON_BLUE), 345, 460, menu_display, "Pixel")
+
+            menu_btn = pygame.Rect(140, 455, 105, 40)
+            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), menu_btn)
+            Texto("Menu", 25, (PYTHON_BLUE), 145, 460, menu_display, "Pixel")
+
+            for event in pygame.event.get():
+                # Sai do MENU
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                        quit()
+
+                # Volta para o menu inicial do jogo
+                if menu_btn.collidepoint((mx, my)):
+                    if event.type == MOUSEBUTTONDOWN:
+                        Playing = True
+                        Menu.main_menu()
+                # Sai do jogo
+                elif quit_btn.collidepoint((mx, my)):
+                    if event.type == MOUSEBUTTONDOWN:
+                        pygame.quit()
+                        quit()
+                
+            pygame.display.update()

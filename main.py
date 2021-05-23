@@ -106,7 +106,7 @@ if __name__ == "__main__":
                     if resp == res:
                         audios.acertou.play()
                         count += 1
-                        premio += 5000
+                        premio += valor
                         sleep(1)
                         respondeu = False
                     else:
@@ -129,16 +129,23 @@ if __name__ == "__main__":
             Texto('Premio: ' + str(premio),16,( 218, 165, 32), 20, 650, menu_display, "Pixel")
 
             if count < 5:
+                valor = 1000
                 if count == 0:
                     lista = perguntas1[:]
                 perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
             elif count < 10:
                 if count == 5:
+                    valor = 5000
                     lista = perguntas2[:]
+                else:
+                    valor = 10000
                 perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
             elif count < 15:
                 if count == 10:
+                    valor = 50000
                     lista = perguntas3[:]
+                else:
+                    valor = 100000
                 perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
             else:
                 lista = perguntafinal[:]

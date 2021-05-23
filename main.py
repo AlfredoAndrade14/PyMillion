@@ -128,16 +128,16 @@ if __name__ == "__main__":
             Texto('Million',30,(251, 236, 93), 205, 60, menu_display, "8-Bit")
             Texto('Premio: ' + str(premio),16,( 218, 165, 32), 20, 650, menu_display, "Pixel")
 
-            if count < 6:
+            if count < 5:
                 if count == 0:
                     lista = perguntas1[:]
                 perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
-            elif count < 11:
-                if count == 6:
+            elif count < 10:
+                if count == 5:
                     lista = perguntas2[:]
                 perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
-            elif count < 16:
-                if count == 11:
+            elif count < 15:
+                if count == 10:
                     lista = perguntas3[:]
                 perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
             else:
@@ -147,7 +147,7 @@ if __name__ == "__main__":
 
             Pergunta = Caixinha(0, 120, 600, 90, menu_display, (25, 25, 112, 10), count, perg)
             Pergunta.desenha_caixinha()
-            Pergunta.escreve_pergunta(perg, (255, 255, 255), 15, 160)
+            Pergunta.escreve_pergunta(str(count + 1) + '. ' + perg, (255, 255, 255), 15, 160)
 
             # Alternativa A
             alt_a = pygame.Rect(45, 260, 525, 53)

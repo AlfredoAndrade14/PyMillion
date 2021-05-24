@@ -1,6 +1,5 @@
 import pygame
 from pygame.constants import MOUSEBUTTONDOWN
-from pygame.time import Clock
 
 # Importa uma classe para importar sons e tocar a musica
 from .audios import Audios
@@ -87,7 +86,7 @@ def run():
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     quit()
-            # Abaixo desta linha copie e cole
+
             if event.type == MOUSEBUTTONDOWN:
                 if alt_a.collidepoint((mx, my)):
                     alternativa = A.conteudo

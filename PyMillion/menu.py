@@ -1,5 +1,4 @@
 import pygame
-from pygame import mixer
 
 from pygame.constants import KEYDOWN, K_t, MOUSEBUTTONDOWN
 
@@ -20,37 +19,32 @@ class Menu():
             menu_display = pygame.display.set_mode(SCREEN_SIZE)
             pygame.display.set_caption('PyMillion')
 
-            # CORES
-            BACKGROUND_COLOR = (68, 73, 80)
-            PYTHON_BLUE = (30, 144, 255)
-            WHITE_PY = (255, 255, 255)
-
-            menu_display.fill(BACKGROUND_COLOR)
+            menu_display.fill((68, 73, 80))
             objectGroup.draw(menu_display)
 
             Texto('Py',30,(30,144,255), 270, 40, menu_display,"8-Bit")
             Texto('Million',30,(251, 236, 93), 200, 90, menu_display,"8-Bit")
 
-            Texto("MAIN MENU", 30, (WHITE_PY), 160, 200, menu_display, "Pixel")
+            Texto("MAIN MENU", 30, (255, 255, 255), 160, 200, menu_display, "Pixel")
 
             mx, my = pygame.mouse.get_pos()
 
             # Botões
             start_game_btn = pygame.Rect(170, 295, 245, 40)
-            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), start_game_btn)
-            Texto("START GAME", 25, (PYTHON_BLUE), 170, 300, menu_display, "Pixel")
+            pygame.draw.rect(menu_display, (68, 73, 80), start_game_btn)
+            Texto("START GAME", 25, (30, 144, 255), 170, 300, menu_display, "Pixel")
 
             options_btn = pygame.Rect(200, 345, 185, 40)
-            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), options_btn)
-            Texto("OPTIONS", 25, (PYTHON_BLUE), 208, 350, menu_display, "Pixel")
+            pygame.draw.rect(menu_display, (68, 73, 80), options_btn)
+            Texto("OPTIONS", 25, (30, 144, 255), 208, 350, menu_display, "Pixel")
 
             credits_btn = pygame.Rect(200, 395, 185, 40)
-            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), credits_btn)
-            Texto("CREDITS", 25, (PYTHON_BLUE), 208, 400, menu_display, "Pixel")
+            pygame.draw.rect(menu_display, (68, 73, 80), credits_btn)
+            Texto("CREDITS", 25, (30, 144, 255), 208, 400, menu_display, "Pixel")
 
             quit_btn = pygame.Rect(240, 445, 105, 40)
-            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), quit_btn)
-            Texto("SAIR", 25, (PYTHON_BLUE), 245, 450, menu_display, "Pixel")
+            pygame.draw.rect(menu_display, (68, 73, 80), quit_btn)
+            Texto("SAIR", 25, (30, 144, 255), 245, 450, menu_display, "Pixel")
 
             for event in pygame.event.get():
                 # Sai do MENU
@@ -98,15 +92,10 @@ class Menu():
         SCREEN_SIZE = (600, 695)
         menu_display = pygame.display.set_mode(SCREEN_SIZE)
         pygame.display.set_caption('PyMillion')
-
-        # CORES
-        BACKGROUND_COLOR = (68, 73, 80)
-        PYTHON_BLUE = (30, 144, 255)
-        WHITE_PY = (255, 255, 255)
         
         Playing = False
         while not Playing:
-            menu_display.fill(BACKGROUND_COLOR)
+            menu_display.fill((68, 73, 80))
             objectGroup.draw(menu_display)
 
             Texto('Py',30,(30,144,255), 270, 40, menu_display,"8-Bit")
@@ -120,12 +109,12 @@ class Menu():
 
             # Botões
             quit_btn = pygame.Rect(340, 455, 105, 40)
-            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), quit_btn)
-            Texto("SAIR", 25, (PYTHON_BLUE), 345, 460, menu_display, "Pixel")
+            pygame.draw.rect(menu_display, ((68, 73, 80)), quit_btn)
+            Texto("SAIR", 25, (30, 144, 255), 345, 460, menu_display, "Pixel")
 
             menu_btn = pygame.Rect(140, 455, 105, 40)
-            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), menu_btn)
-            Texto("Menu", 25, (PYTHON_BLUE), 145, 460, menu_display, "Pixel")
+            pygame.draw.rect(menu_display, ((68, 73, 80)), menu_btn)
+            Texto("Menu", 25, (30, 144, 255), 145, 460, menu_display, "Pixel")
 
             for event in pygame.event.get():
                 # Sai do MENU
@@ -156,38 +145,31 @@ class Menu():
             SCREEN_SIZE = (600, 695)
             menu_display = pygame.display.set_mode(SCREEN_SIZE)
             pygame.display.set_caption('PyMillion')
-
-            # CORES
-            BACKGROUND_COLOR = (68, 73, 80)
-            PYTHON_BLUE = (30, 144, 255)
-            WHITE_PY = (255, 255, 255)
         
             Option = False
             while not Option:
-                menu_display.fill(BACKGROUND_COLOR)
+                menu_display.fill((68, 73, 80))
                 objectGroup.draw(menu_display)
 
                 Texto('Py',30,(30,144,255), 270, 40, menu_display,"8-Bit")
                 Texto('Million',30,(251, 236, 93), 200, 90, menu_display,"8-Bit")
 
-                Texto("OPÇÕES", 25, (WHITE_PY), 220, 200, menu_display, "Pixel")
+                Texto("OPÇÕES", 25, (255, 255, 255), 220, 200, menu_display, "Pixel")
 
                 mx, my = pygame.mouse.get_pos()
 
                 # Botões
                 som_btn = pygame.Rect(145, 325, 245, 40)
-                pygame.draw.rect(menu_display, (BACKGROUND_COLOR), som_btn)
-                Texto("Desativar som", 25, (PYTHON_BLUE), 150, 330, menu_display, "Pixel")
+                pygame.draw.rect(menu_display, ((68, 73, 80)), som_btn)
+                Texto("Desativar som", 25, (30, 144, 255), 150, 330, menu_display, "Pixel")
 
                 som_btn2 = pygame.Rect(175, 375, 245, 40)
-                pygame.draw.rect(menu_display, (BACKGROUND_COLOR), som_btn2)
-                Texto("Ativar som", 25, (PYTHON_BLUE), 180, 380, menu_display, "Pixel")
+                pygame.draw.rect(menu_display, ((68, 73, 80)), som_btn2)
+                Texto("Ativar som", 25, (30, 144, 255), 180, 380, menu_display, "Pixel")
 
                 menu_btn = pygame.Rect(235, 455, 105, 40)
-                pygame.draw.rect(menu_display, (BACKGROUND_COLOR), menu_btn)
-                Texto("Menu", 25, (PYTHON_BLUE), 240, 460, menu_display, "Pixel")
-
-                mpaused = False
+                pygame.draw.rect(menu_display, ((68, 73, 80)), menu_btn)
+                Texto("Menu", 25, (30, 144, 255), 240, 460, menu_display, "Pixel")
 
                 for event in pygame.event.get():
                     # Sai do MENU
@@ -220,15 +202,11 @@ class Menu():
             # Configura a janela
             SCREEN_SIZE = (600, 695)
             menu_display = pygame.display.set_mode(SCREEN_SIZE)
-            pygame.display.set_caption('PyMillion')
-
-            # CORES
-            BACKGROUND_COLOR = (68, 73, 80)
-            PYTHON_BLUE = (30, 144, 255)    
+            pygame.display.set_caption('PyMillion')    
             
             Playing = False
             while not Playing:
-                menu_display.fill(BACKGROUND_COLOR)
+                menu_display.fill((68, 73, 80))
                 
                 Texto('Py',30,(30,144,255), 275, 10, menu_display, "8-Bit")
                 Texto('Million',30,(251, 236, 93), 205, 60, menu_display, "8-Bit")
@@ -242,12 +220,12 @@ class Menu():
 
                 # Botões
                 quit_btn = pygame.Rect(340, 455, 105, 40)
-                pygame.draw.rect(menu_display, (BACKGROUND_COLOR), quit_btn)
-                Texto("SAIR", 25, (PYTHON_BLUE), 345, 460, menu_display, "Pixel")
+                pygame.draw.rect(menu_display, ((68, 73, 80)), quit_btn)
+                Texto("SAIR", 25, (30, 144, 255), 345, 460, menu_display, "Pixel")
 
                 menu_btn = pygame.Rect(140, 455, 105, 40)
-                pygame.draw.rect(menu_display, (BACKGROUND_COLOR), menu_btn)
-                Texto("Menu", 25, (PYTHON_BLUE), 145, 460, menu_display, "Pixel")
+                pygame.draw.rect(menu_display, ((68, 73, 80)), menu_btn)
+                Texto("Menu", 25, (30, 144, 255), 145, 460, menu_display, "Pixel")
 
                 for event in pygame.event.get():
                     # Sai do MENU
@@ -276,21 +254,16 @@ class Menu():
         SCREEN_SIZE = (600, 695)
         menu_display = pygame.display.set_mode(SCREEN_SIZE)
         pygame.display.set_caption('PyMillion')
-
-        # CORES
-        BACKGROUND_COLOR = (68, 73, 80)
-        PYTHON_BLUE = (30, 144, 255)
-        WHITE_PY = (255, 255, 255)
         
         Playing = False
         while not Playing:
-            menu_display.fill(BACKGROUND_COLOR)
+            menu_display.fill((68, 73, 80))
             objectGroup.draw(menu_display)
 
             Texto('Py',30,(30,144,255), 270, 40, menu_display,"8-Bit")
             Texto('Million',30,(251, 236, 93), 200, 90, menu_display,"8-Bit")
 
-            Texto("PARABÉNS VOCÊ GANHOU", 16, (WHITE_PY), 145, 200, menu_display, "Pixel")
+            Texto("PARABÉNS VOCÊ GANHOU", 16, (255, 255, 255), 145, 200, menu_display, "Pixel")
             Texto("Você ganhou Um milhão de reais", 16, (218, 165, 32), 70, 300, menu_display, "Pixel")
             Texto("Você acertou todas as perguntas", 16, (60, 179, 113), 60, 350, menu_display, "Pixel")
 
@@ -298,12 +271,12 @@ class Menu():
 
             # Botões
             quit_btn = pygame.Rect(340, 455, 105, 40)
-            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), quit_btn)
-            Texto("SAIR", 25, (PYTHON_BLUE), 345, 460, menu_display, "Pixel")
+            pygame.draw.rect(menu_display, ((68, 73, 80)), quit_btn)
+            Texto("SAIR", 25, (30, 144, 255), 345, 460, menu_display, "Pixel")
 
             menu_btn = pygame.Rect(140, 455, 105, 40)
-            pygame.draw.rect(menu_display, (BACKGROUND_COLOR), menu_btn)
-            Texto("Menu", 25, (PYTHON_BLUE), 145, 460, menu_display, "Pixel")
+            pygame.draw.rect(menu_display, ((68, 73, 80)), menu_btn)
+            Texto("Menu", 25, (30, 144, 255), 145, 460, menu_display, "Pixel")
 
             for event in pygame.event.get():
                 # Sai do MENU

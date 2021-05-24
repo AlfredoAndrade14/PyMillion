@@ -40,6 +40,7 @@ Gameloop = Menu.main_menu()
 
 # CORES
 BACKGROUND_COLOR = (68, 73, 80)
+# Cores
 cor_A = (30,144,255, 10)
 cor_B = (178, 34, 34, 10)
 cor_C = (251, 236, 93, 10)
@@ -102,6 +103,25 @@ while Gameloop:
             else:
                 alternativa = ""
 
+            if count == 15:
+                if alternativa != "":
+                    resp = valida_resposta(alternativa)
+                    if resp == res:
+                        audios.acertou.play()
+                        count += 1
+                        premio == 1000000
+                        sleep(1)
+                        Menu.vitoria(premio, count)
+                        respondeu = False
+                        count = 0
+                        premio = 0
+                    else:
+                        audios.errou.play()
+                        Menu.game_over(premio, count)
+                        respondeu = False
+                        count = 0
+                        premio = 0
+
             if alternativa != "":
                 resp = valida_resposta(alternativa)
                 if resp == res:
@@ -146,6 +166,9 @@ while Gameloop:
             else:
                 valor = 100000
             perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
+        elif count == 15:
+            perguntafinal = [('quais são metodos de organização classica', 'bubble e insertion'), 'bubble e insertion', 'bubble e random', 'insertion e random', 'random e force']
+            perg, res, a, b, c, d = perguntafinal[0][0], perguntafinal[0][1], perguntafinal[1], perguntafinal[2], perguntafinal[3], perguntafinal[4]
         else:
             lista = perguntafinal[:]
             perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
@@ -154,6 +177,8 @@ while Gameloop:
         Pergunta = Caixinha(0, 120, 600, 90, menu_display, (25, 25, 112, 10), count, perg)
         Pergunta.desenha_caixinha()
         Pergunta.escreve_pergunta(str(count + 1) + '. ' + perg, (255, 255, 255), 15, 160)
+
+        
 
         # Alternativa A
         alt_a = pygame.Rect(45, 260, 525, 53)

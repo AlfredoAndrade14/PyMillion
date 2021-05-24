@@ -1,0 +1,3 @@
+include PyMillion/src/img/*.png
+include PyMillion/src/sounds/*.wav
+include PyMillion/src/fonts/*.ttf

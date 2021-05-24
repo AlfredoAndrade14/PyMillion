@@ -1,2 +1,16 @@
-# projetop1
-Projeto de criação de um jogo em python com o Pygmae
+# Bomberpy
+Um jogo do milhão sobre python feito em python.
+
+## Instalação
+```
+$ pip3 install pymillion
+```
+
+## Como jogar
+Para iniciar o jogo, digite: 
+```
+$ pymillion
+```
+
+## Controles
+- Mouse Click :computer_mouse:

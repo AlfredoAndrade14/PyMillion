@@ -203,15 +203,12 @@ class Menu():
                     if som_btn.collidepoint((mx, my)):
                         if event.type == MOUSEBUTTONDOWN:
                             pygame.mixer.quit()
-                            pygame.mixer.init()
-                            mpaused = True
                             
                     elif som_btn2.collidepoint((mx, my)):
                         if event.type == MOUSEBUTTONDOWN:
-                            if mpaused:
-                                pygame.mixer.music.load('src/sounds/musica.wav')
-                                pygame.mixer.music.play(-1)
-                                mpaused = False
+                            pygame.mixer.init()
+                            pygame.mixer.music.load('PyMillion/src/sounds/musica.wav')
+                            pygame.mixer.music.play(-1)
                     # Sai do jogo
                     elif menu_btn.collidepoint((mx, my)):
                         if event.type == MOUSEBUTTONDOWN:

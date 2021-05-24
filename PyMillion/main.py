@@ -1,5 +1,5 @@
 import pygame
-from pygame.constants import MOUSEBUTTONDOWN
+from pygame.constants import KEYDOWN, K_KP_ENTER, K_RETURN, K_a, K_b, K_c, K_d, MOUSEBUTTONDOWN
 
 # Importa uma classe para importar sons e tocar a musica
 from .audios import Audios
@@ -45,9 +45,9 @@ def run():
     def valida_resposta(alternativa):
         audios.certeza.play()
         certeza = False
-        sim = Caixinha(208, 525, 145, 35, menu_display, (222, 207, 0), "CONFIRMAR", "") 
+        sim = Caixinha(213, 525, 145, 35, menu_display, (222, 207, 0), "CONFIRMAR", "") 
         sim.desenha_certeza()
-        sim_box = pygame.Rect(208, 525, 145, 35)
+        sim_box = pygame.Rect(213, 525, 145, 35)
         pygame.display.update()
         while not certeza:
             mx, my = pygame.mouse.get_pos()
@@ -55,25 +55,27 @@ def run():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
-                if event.type == MOUSEBUTTONDOWN:
-                    if sim_box.collidepoint((mx, my)):
+                if event.type == MOUSEBUTTONDOWN or event.type == KEYDOWN:
+                    if sim_box.collidepoint((mx, my)) or event.key == K_RETURN:
                         return alternativa
                     else:
-                        if alt_a.collidepoint((mx, my)):
+                        if alt_a.collidepoint((mx, my)) or event.key == K_a:
                             audios.certeza.play()
                             alternativa = A.conteudo
-                        elif alt_b.collidepoint((mx, my)):
+                        elif alt_b.collidepoint((mx, my)) or event.key == K_b:
                             audios.certeza.play()
                             alternativa = B.conteudo
-                        elif alt_c.collidepoint((mx, my)):
+                        elif alt_c.collidepoint((mx, my)) or event.key == K_c:
                             audios.certeza.play()
                             alternativa = C.conteudo
-                        elif alt_d.collidepoint((mx, my)):
+                        elif alt_d.collidepoint((mx, my)) or event.key == K_d:
                             audios.certeza.play()
                             alternativa = D.conteudo
+                        elif event.key not in (K_a, K_b, K_c, K_d, K_RETURN):
+                            pass
         
-    count = 15
-    premio = 500000
+    count = 0
+    premio = 0
     respondeu = False
     while Gameloop:
         mx, my = pygame.mouse.get_pos()
@@ -87,14 +89,14 @@ def run():
                     pygame.quit()
                     quit()
 
-            if event.type == MOUSEBUTTONDOWN:
-                if alt_a.collidepoint((mx, my)):
+            if event.type == MOUSEBUTTONDOWN or event.type == KEYDOWN:
+                if alt_a.collidepoint((mx, my)) or event.key == K_a:
                     alternativa = A.conteudo
-                elif alt_b.collidepoint((mx, my)):
+                elif alt_b.collidepoint((mx, my)) or event.key == K_b:
                     alternativa = B.conteudo
-                elif alt_c.collidepoint((mx, my)):
+                elif alt_c.collidepoint((mx, my)) or event.key == K_c:
                     alternativa = C.conteudo
-                elif alt_d.collidepoint((mx, my)):
+                elif alt_d.collidepoint((mx, my)) or event.key == K_d:
                     alternativa = D.conteudo
                 else:
                     alternativa = ""
@@ -125,6 +127,7 @@ def run():
                         premio = 0
                 else:
                     pygame.display.update()
+
 
         if not respondeu and Gameloop:
             # Define objetos da janela

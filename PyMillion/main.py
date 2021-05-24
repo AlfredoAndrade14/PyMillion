@@ -100,37 +100,28 @@ def run():
                 else:
                     alternativa = ""
 
-                if count == 15:
-                    if alternativa != "":
-                        resp = valida_resposta(alternativa)
-                        if resp == res:
-                            audios.acertou.play()
-                            count += 1
-                            premio += 500000
-                            sleep(1)
-                            Menu.vitoria(premio, count)
-                            respondeu = False
-                            count = 0
-                            premio = 0
-                        else:
-                            audios.errou.play()
-                            premio = 0
-                            Menu.game_over(premio, count)
-                            respondeu = False
-                            count = 0
-
                 if alternativa != "":
                     resp = valida_resposta(alternativa)
                     if resp == res:
-                        audios.acertou.play()
-                        count += 1
-                        premio += valor
-                        sleep(1)
-                        respondeu = False
+                        if count != 15:
+                            audios.acertou.play()
+                            count += 1
+                            premio += valor
+                            sleep(1)
+                            respondeu = False
+                        else:
+                            audios.acertou2.play()
+                            count = 0
+                            premio = 0
+                            sleep(1)
+                            respondeu = False
+                            Menu.vitoria()
                     else:
                         audios.errou.play()
-                        Menu.game_over(premio, count)
+                        if count == 15:
+                            premio = 0
                         respondeu = False
+                        Menu.game_over(premio, count)
                         count = 0
                         premio = 0
                 else:
@@ -163,13 +154,11 @@ def run():
                 else:
                     valor = 100000
                 perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
-            elif count == 15:
-                perguntafinal = [('quais são metodos de organização classica', 'bubble e insertion'), 'bubble e insertion', 'bubble e random', 'insertion e random', 'random e force']
-                perg, res, a, b, c, d = perguntafinal[0][0], perguntafinal[0][1], perguntafinal[1], perguntafinal[2], perguntafinal[3], perguntafinal[4]
             else:
                 lista = perguntafinal[:]
                 perg, res, a, b, c, d, lista = sorteiaPergunta(lista)
                 audios.pfinal.play()
+
 
             Pergunta = Caixinha(0, 120, 600, 90, menu_display, (25, 25, 112, 10), count, perg)
             Pergunta.desenha_caixinha()

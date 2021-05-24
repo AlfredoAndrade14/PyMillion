@@ -271,7 +271,7 @@ class Menu():
 
                 pygame.display.update()
 
-    def vitoria(premio, count):   
+    def vitoria():   
         # Configura a janela
         SCREEN_SIZE = (600, 695)
         menu_display = pygame.display.set_mode(SCREEN_SIZE)
@@ -291,7 +291,7 @@ class Menu():
             Texto('Million',30,(251, 236, 93), 200, 90, menu_display,"8-Bit")
 
             Texto("PARABÉNS VOCÊ GANHOU", 16, (WHITE_PY), 145, 200, menu_display, "Pixel")
-            Texto("Você ganhou: " + str(premio) + " Reais", 16, (218, 165, 32), 150, 300, menu_display, "Pixel")
+            Texto("Você ganhou Um milhão de reais", 16, (218, 165, 32), 70, 300, menu_display, "Pixel")
             Texto("Você acertou todas as perguntas", 16, (60, 179, 113), 60, 350, menu_display, "Pixel")
 
             mx, my = pygame.mouse.get_pos()

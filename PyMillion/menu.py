@@ -3,9 +3,9 @@ from pygame import mixer
 
 from pygame.constants import KEYDOWN, K_t, MOUSEBUTTONDOWN
 
-from textos import Texto
+from .textos import Texto
 
-from pythonImg import Python
+from .pythonImg import Python
 
 objectGroup = pygame.sprite.Group()
 

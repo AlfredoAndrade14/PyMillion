@@ -3,24 +3,24 @@ from pygame.constants import MOUSEBUTTONDOWN
 from pygame.time import Clock
 
 # Importa uma classe para importar sons e tocar a musica
-from audios import Audios
+from .audios import Audios
 
 # Importa uma classe para cirar textos na tela
-from textos import Texto
+from .textos import Texto
 
 # Importa a classe que cria o menu principal
-from menu import Menu
+from .menu import Menu
 
 from time import sleep
 
 # Importa a função de sorteio
-from sorteiaperg import sorteiaPergunta
-from perguntas import perguntas1,perguntas2,perguntas3,perguntafinal
+from .sorteiaperg import sorteiaPergunta
+from .perguntas import perguntas1,perguntas2,perguntas3,perguntafinal
 
 # Inicia o pygame
 pygame.init()
 
-from caixa import *
+from .caixa import *
 
 # Inicializa os audios do jogo
 audios = Audios()

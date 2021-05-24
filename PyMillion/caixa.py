@@ -1,7 +1,7 @@
 import pygame
 
 # Importa uma classe para cirar textos na tela
-from textos import Texto
+from .textos import Texto
 
 class Caixinha:
     def __init__(self, x, y, w, h, display, cor, alternativa, conteudo):

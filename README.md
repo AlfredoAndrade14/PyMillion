@@ -9,7 +9,7 @@ $ pip3 install pymillion
 ## Como jogar
 Para iniciar o jogo, digite: 
 ```
-$ pymillion
+$ python3 -m PyMillion 
 ```
 
 ## Controles

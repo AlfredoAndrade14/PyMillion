@@ -27,11 +27,6 @@ setup(
     ],
     packages=find_packages(),
     install_requires=['pygame>=2.0'],
-    entry_points={
-        'console_scripts': [
-            'pymillion=python3 -m PyMillion'
-        ]
-    },
     python_requires='>=3.6',
     include_package_data=True,
 )

@@ -13,4 +13,4 @@ $ python3 -m PyMillion
 ```
 
 ## Controles
-- Mouse Click :computer_mouse:
+- Mouse Click

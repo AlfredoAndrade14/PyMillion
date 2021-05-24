@@ -55,12 +55,12 @@ class Menu():
             for event in pygame.event.get():
                 # Sai do MENU
                 if event.type == pygame.QUIT:
-                    Gameloop = False
-                    return Gameloop
+                    pygame.quit()
+                    quit()
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
-                        Gameloop = False
-                        return Gameloop
+                        pygame.quit()
+                        quit()
 
                 # Inicia o jogo
                 if start_game_btn.collidepoint((mx, my)):

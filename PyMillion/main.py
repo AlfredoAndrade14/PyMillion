@@ -83,10 +83,12 @@ while Gameloop:
     for event in pygame.event.get():
         # Fecha a janela
         if event.type == pygame.QUIT:
-            Gameloop = False
+            pygame.quit()
+            quit()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                Gameloop = False
+                pygame.quit()
+                quit()
         # Abaixo desta linha copie e cole
         if event.type == MOUSEBUTTONDOWN:
             if alt_a.collidepoint((mx, my)):

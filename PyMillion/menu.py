@@ -196,6 +196,7 @@ class Menu():
                     # Sai do jogo
                     elif menu_btn.collidepoint((mx, my)):
                         if event.type == MOUSEBUTTONDOWN:
+                            Option = True
                             return
                     
                 pygame.display.update()

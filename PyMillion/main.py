@@ -119,6 +119,8 @@ def run():
                         audios.errou.play()
                         if count == 15:
                             premio = 0
+                        else:
+                            premio = int(premio/2)
                         respondeu = False
                         Menu.game_over(premio, count)
                         count = 0

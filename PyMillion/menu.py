@@ -149,6 +149,7 @@ class Menu():
             pygame.display.set_caption('PyMillion')
         
             Option = False
+            Muted = False
             while not Option:
                 menu_display.fill((68, 73, 80))
                 objectGroup.draw(menu_display)
@@ -174,7 +175,7 @@ class Menu():
                 Texto("Menu", 25, (30, 144, 255), 240, 460, menu_display, "Pixel")
 
                 for event in pygame.event.get():
-                    # Sai do MENU
+                    # Sai das opções
                     if event.type == pygame.QUIT:
                         pygame.quit()
                         quit()
@@ -183,15 +184,17 @@ class Menu():
                             pygame.quit()
                             quit()
 
-                    # Volta para o menu inicial do jogo
                     if som_btn.collidepoint((mx, my)):
-                        if event.type == MOUSEBUTTONDOWN:
+                        if event.type == MOUSEBUTTONDOWN and not Muted:
                             pygame.mixer.quit()
+                            pygame.mixer.init()
+                            Muted = True
                             
                     elif som_btn2.collidepoint((mx, my)):
-                        if event.type == MOUSEBUTTONDOWN:
+                        if event.type == MOUSEBUTTONDOWN and Muted:
                             pygame.mixer.init()
                             Audios()
+                            Muted = False
                             
                     # Sai do jogo
                     elif menu_btn.collidepoint((mx, my)):

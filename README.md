@@ -3,7 +3,12 @@ Um jogo do milhão sobre python feito em python.
 
 ## Instalação
 ```
-$ pip3 install pymillion
+$ pip install thePyMillion
+```
+
+## Desinstalação
+```
+$ pip unistall thePyMillion
 ```
 
 ## Como jogar

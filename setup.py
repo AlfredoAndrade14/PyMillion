@@ -21,8 +21,8 @@ setup(
         'quiz'
     ],
     classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python : 3",
+        "License :: OSI Approved : MIT License",
         "Operating System :: OS Independent",
     ],
     packages=find_packages(),

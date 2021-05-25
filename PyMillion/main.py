@@ -45,9 +45,9 @@ def run():
     def valida_resposta(alternativa):
         audios.certeza.play()
         certeza = False
-        sim = Caixinha(213, 525, 145, 35, menu_display, (222, 207, 0), "CONFIRMAR", "") 
+        sim = Caixinha(220, 525, 145, 35, menu_display, (222, 207, 0), "CONFIRMAR", "") 
         sim.desenha_certeza()
-        sim_box = pygame.Rect(213, 525, 145, 35)
+        sim_box = pygame.Rect(220, 525, 145, 35)
         pygame.display.update()
         while not certeza:
             mx, my = pygame.mouse.get_pos()
@@ -55,24 +55,24 @@ def run():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
-                if event.type == MOUSEBUTTONDOWN or event.type == KEYDOWN:
-                    if sim_box.collidepoint((mx, my)) or event.key == K_RETURN:
+
+                if event.type == MOUSEBUTTONDOWN:
+                    if sim_box.collidepoint((mx, my)):
                         return alternativa
                     else:
-                        if alt_a.collidepoint((mx, my)) or event.key == K_a:
+                        if alt_a.collidepoint((mx, my)):
                             audios.certeza.play()
                             alternativa = A.conteudo
-                        elif alt_b.collidepoint((mx, my)) or event.key == K_b:
+                        elif alt_b.collidepoint((mx, my)):
                             audios.certeza.play()
                             alternativa = B.conteudo
-                        elif alt_c.collidepoint((mx, my)) or event.key == K_c:
+                        elif alt_c.collidepoint((mx, my)):
                             audios.certeza.play()
                             alternativa = C.conteudo
-                        elif alt_d.collidepoint((mx, my)) or event.key == K_d:
+                        elif alt_d.collidepoint((mx, my)):
                             audios.certeza.play()
                             alternativa = D.conteudo
-                        elif event.key not in (K_a, K_b, K_c, K_d, K_RETURN):
-                            pass
+                        
         
     count = 0
     premio = 0
@@ -89,14 +89,14 @@ def run():
                     pygame.quit()
                     quit()
 
-            if event.type == MOUSEBUTTONDOWN or event.type == KEYDOWN:
-                if alt_a.collidepoint((mx, my)) or event.key == K_a:
+            if event.type == MOUSEBUTTONDOWN:
+                if alt_a.collidepoint((mx, my)):
                     alternativa = A.conteudo
-                elif alt_b.collidepoint((mx, my)) or event.key == K_b:
+                elif alt_b.collidepoint((mx, my)):
                     alternativa = B.conteudo
-                elif alt_c.collidepoint((mx, my)) or event.key == K_c:
+                elif alt_c.collidepoint((mx, my)):
                     alternativa = C.conteudo
-                elif alt_d.collidepoint((mx, my)) or event.key == K_d:
+                elif alt_d.collidepoint((mx, my)):
                     alternativa = D.conteudo
                 else:
                     alternativa = ""

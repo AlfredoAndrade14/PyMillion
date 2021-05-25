@@ -6,6 +6,8 @@ from .textos import Texto
 
 from .pythonImg import Python
 
+from .audios import Audios
+
 objectGroup = pygame.sprite.Group()
 
 python = Python(objectGroup)
@@ -189,8 +191,8 @@ class Menu():
                     elif som_btn2.collidepoint((mx, my)):
                         if event.type == MOUSEBUTTONDOWN:
                             pygame.mixer.init()
-                            pygame.mixer.music.load('PyMillion/src/sounds/musica.wav')
-                            pygame.mixer.music.play(-1)
+                            Audios()
+                            
                     # Sai do jogo
                     elif menu_btn.collidepoint((mx, my)):
                         if event.type == MOUSEBUTTONDOWN:

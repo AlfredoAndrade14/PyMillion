@@ -1,5 +1,5 @@
 import pygame
-from pygame.constants import KEYDOWN, K_KP_ENTER, K_RETURN, K_a, K_b, K_c, K_d, MOUSEBUTTONDOWN
+from pygame.constants import MOUSEBUTTONDOWN
 
 # Importa uma classe para importar sons e tocar a musica
 from .audios import Audios
@@ -25,8 +25,6 @@ def run():
 
     # Inicializa os audios do jogo
     audios = Audios()
-    pygame.mixer.music.load('PyMillion/src/sounds/musica.wav')
-    pygame.mixer.music.play(-1) 
 
     # Configura a janela
     SCREEN_SIZE = (600, 695)
